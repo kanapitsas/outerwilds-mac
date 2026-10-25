@@ -1,0 +1,10 @@
+.venv/
+build/
+__pycache__/
+*.pyc
+obj/
+bin/
+.DS_Store
+*.trace
+# Built app: contains the game's data and Unity's runtime, never commit it
+*.app/

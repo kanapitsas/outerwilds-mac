@@ -8,3 +8,4 @@ bin/
 *.trace
 # Built app: contains the game's data and Unity's runtime, never commit it
 *.app/
+deps/

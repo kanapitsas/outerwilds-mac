@@ -48,9 +48,30 @@ with the system Metal compiler, the same one the player uses.
 
 ## Build
 
-Requirements: Python 3.11+, CMake, Xcode command line tools, the .NET 10 SDK
-(`dotnet` on the PATH; for `tools/serialpatch` and the Roslyn compiler used by
-`tools/build_*.sh`). Versions below are the ones the build was tested with.
+Requirements: an Apple silicon Mac, Python 3.11+, CMake, Xcode command line
+tools, the .NET 10 SDK (`dotnet` on the PATH). With Homebrew:
+
+```sh
+xcode-select --install
+brew install python@3.12 cmake dotnet
+```
+
+Then, from this folder, point the script at your Windows copy of the game
+(the folder that contains `OuterWilds_Data`):
+
+```sh
+./setup.sh "/path/to/Outer Wilds"
+```
+
+It checks the tools, downloads Unity 2020.3.48f1 (3.4 GB, from Unity's
+download archive) and Steamworks.NET 20.1.0 into `deps/` (SHA-256 checked),
+builds HLSLcc and the helpers, and writes `Outer Wilds.app` here. Re-running
+skips finished steps; `deps/` (about 4.5 GB) can be deleted afterwards.
+
+### Manual build
+
+What `setup.sh` does, step by step. Versions are the ones the build was
+tested with.
 
 ```sh
 python3 -m venv .venv && .venv/bin/pip install UnityPy==1.25.4 lz4==4.4.5
